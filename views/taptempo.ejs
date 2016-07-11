@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel="icon" href="/images/taptempoLogo.png">
+  <!-- 3rd party plugins -->
+    <script type="text/javascript" src="/javascripts/jquery.min.js"></script>
+    <script type="text/javascript" src="/javascripts/jquery-ui.js"></script>
+    <script type="text/javascript" src="/javascripts/bootstrap.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="/stylesheets/jquery-ui.css">
+    <link rel="stylesheet" type="text/css" href="/stylesheets/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="/stylesheets/font-awesome/css/font-awesome.css">
+    <script type="text/javascript" src="/javascripts/angular.min.js"></script>
+  <!-- custom page specific --> 
+    <!-- fonts -->
+    <script type="text/javascript" src="/javascripts/taptempo-brain.js"></script>
+    <link href='https://fonts.googleapis.com/css?family=Special+Elite' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Quicksand' rel='stylesheet' type='text/css'>  
+    <!-- CSS Styles -->
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+
+
+  </head>
+  <body>  
+  <!-- Include the Header -->
+  <%- include header.ejs %>
+
+	<div class="text-center">
+  <!-- Page Body -->
+    <h1 class="title" ><%= title %></h1>
+    <hr>
+    <img src="/images/taptempoLogo.png"><br><br><br>
+    
+    <button class="btn btn-primary" onclick="tap()">TAP</button>
+
+    <div id="results">
+      <h2 id="tempo">0</h2><h2> &nbsp BPM</h2>
+    </div>
+
+  <!-- Include Footer -->
+    <%- include footer.ejs%>
+  </div>
+  </body>
+</html>

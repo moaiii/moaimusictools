@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel="icon" href="/images/guitarscalesLogo.png">
+  <!-- 3rd party plugins -->
+    <script type="text/javascript" src="/javascripts/jquery.min.js"></script>
+    <script type="text/javascript" src="/javascripts/jquery-ui.js"></script>
+    <script type="text/javascript" src="/javascripts/bootstrap.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="/stylesheets/jquery-ui.css">
+    <link rel="stylesheet" type="text/css" href="/stylesheets/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="/stylesheets/font-awesome/css/font-awesome.css">
+    <script type="text/javascript" src="/javascripts/angular.min.js"></script>
+  <!-- custom page specific -->
+    <script type="text/javascript" src="/javascripts/guitarscales-app.js"></script>
+    <script type="text/javascript" src="/javascripts/guitarscales-brain.js"></script>    
+    <!-- fonts -->
+    <link href='https://fonts.googleapis.com/css?family=Special+Elite' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Quicksand' rel='stylesheet' type='text/css'>  
+    <!-- CSS Styles -->
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+
+  </head>
+  <body ng-app="guitarscales-app">
+	<!-- Include the Header -->
+	<%- include header.ejs %>
+
+	<!-- Page Body -->
+    <h1 class="title"><%= title %></h1>
+    <hr>
+    <img class="logo" src="/images/guitarscalesLogo.png">
+
+    <div class="container" ng-controller="inputForm"> 
+      
+      <!-- User Selection Main -->
+      <div class="well" id="keySelection"> 
+        
+        <!-- input form  -->
+        <form id="key">
+          <!-- Root-->
+          <!-- <div id="root"> -->
+          <div class="col-sm-4">
+            <h3>Root</h3>
+            <div>
+              <select class="form-control" ng-model="selectedNote" ng-options="item as item.note | uppercase for item in chromatic">
+              </select>
+              <p hidden id="selectedNote">{{selectedNote.note}}</p>
+            </div>
+          </div> <!-- END of Root -->
+
+          <!-- Intervals -->
+          <!-- <div id="interval"> -->
+          <div class="col-sm-4">
+            <h3>Interval</h3>
+            <div>
+              <select class="form-control" ng-model="selectedInterval" 
+                  ng-options="item as item.name for item in intervals" selected="Major">
+              </select>
+              <p hidden id="selectedInterval">{{selectedInterval.steps}}</p>
+              <p hidden id="selectedChords">{{selectedInterval.chords}}</p>           
+            </div>
+          </div> <!-- End of Intervals -->
+
+          <!-- Tunings -->
+          <!-- <div id="tuning"> -->
+          <div class="col-sm-4">
+            <h3>Tuning</h3>
+            <div>
+              <select class="form-control" ng-model="selectedTuning" 
+                ng-options="item as item.name for item in tunings">
+              </select>
+              <p hidden id="selectedTuning">{{selectedTuning.notes}}</p>
+            </div>
+          </div>
+          <br>
+          <button class="btn btn-primary" onclick="runMain()">GET SCALES</button>
+        </form> <!-- END of Input form -->
+
+      </div> <!-- END Selection Main -->
+      
+      <div id="output" class="well">
+        <div>
+          <h4>Chords in the {{selectedNote.note | uppercase}} {{selectedInterval.name}} scale</h4>
+          <h4>{{selectedTuning.name}} tuning: {{selectedTuning.notes}}</h4>
+        </div>
+
+  <!--      <div id="output-items">
+          <div id="scaleOutput">
+            
+          </div>  
+        </div> -->
+      </div>  
+
+      <div class="well" id="neck">
+        <div id="accordion">
+          <h3 id="fb-1-header">   (I)</h3>
+            <div class="fretboard" id="fretboard-1">
+              <canvas id="canvas-1" width="695" height="215"></canvas>
+            </div>
+          <h3 id="fb-2-header">   (II)</h3>
+            <div class="fretboard" id="fretboard-2">
+              <canvas id="canvas-2" width="695" height="215"></canvas>
+            </div>
+          <h3 id="fb-3-header">   (III)</h3>
+            <div class="fretboard" id="fretboard-3">
+              <canvas id="canvas-3" width="695" height="215"></canvas>
+            </div>
+          <h3 id="fb-4-header">   (IV)</h3>
+            <div class="fretboard" id="fretboard-4">
+              <canvas id="canvas-4" width="695" height="215"></canvas>
+            </div>
+          <h3 id="fb-5-header">   (V)</h3>
+            <div class="fretboard" id="fretboard-5">
+              <canvas id="canvas-5" width="695" height="215"></canvas>
+            </div>
+          <h3 id="fb-6-header">   (VI)</h3>
+            <div class="fretboard" id="fretboard-6">
+              <canvas id="canvas-6" width="695" height="215"></canvas>
+            </div>
+          <h3 id="fb-7-header">   (VII)</h3>
+            <div class="fretboard" id="fretboard-7">
+              <canvas id="canvas-7" width="695" height="215"></canvas>
+            </div>
+        </div>      
+      </div>
+    </div>
+
+
+
+	<!-- Include Footer -->
+    <%- include footer.ejs%>
+  </body>
+</html>

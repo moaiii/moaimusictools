@@ -1,0 +1,297 @@
+/*
+ *	Site: MOAI MUSIC TOOLS
+ *	Author: CHRISTOPHER MELVILLE
+ *	Date: JUNE 2016
+ *	Comments: BPM calculation stylesheet
+ */
+ /* * * * * * * * * * * * * * *
+* OVERLAID BOOTSTRAP STYLES
+* * * * * * * * * * * * * * */
+/*SASS STYLES*/
+/*08 - clean and highlighted */
+/* * * * * * * * * * * * * * *
+* GENERAL GLOBAL STYLES
+* * * * * * * * * * * * * * */
+h1 {
+  font-family: "Special Elite", cursive; }
+
+body {
+  text-align: center; }
+
+#body {
+  background-color: #EFEFEF; }
+
+h2, h3, h4 {
+  font-family: "Quicksand", sans-serif; }
+
+p {
+  color: #A9A9A9;
+  font-family: "Quicksand", sans-serif; }
+
+body hr {
+  width: 50%;
+  border: 1px solid #FF3B3F; }
+
+iframe {
+  margin: 50px 0 50px 0; }
+
+/* * * * * * * * * * * * * * *
+* GLOBAL STYLES
+* * * * * * * * * * * * * * */
+.logo {
+  margin: 20px; }
+
+.well {
+  border: 2px solid #CAEBF2;
+  background-color: #FF3B3F; }
+  .well h3 {
+    color: #EFEFEF; }
+
+.title {
+  font-size: 400%;
+  padding: 40px;
+  color: #A9A9A9; }
+
+/* * * * * * * * * * * * * * *
+* NAVIGATION
+* * * * * * * * * * * * * * */
+.navbar-default {
+  background-color: #CAEBF2;
+  border: 1px solid #A9A9A9; }
+  .navbar-default div {
+    /*border: 1px solid red;*/ }
+
+.navbar-default a.navbar-brand {
+  font-color: #FF3B3F;
+  font-family: "Special Elite", cursive; }
+
+@media (min-width: 762px) {
+  .navbar-default .container-fluid {
+    display: flex;
+    justify-content: space-between;
+    /*align-items: center;*/ } }
+.navbar-default ul {
+  margin: 0px;
+  height: 100%; }
+
+.navbar-default li {
+  font-family: "Special Elite", cursive;
+  height: 100%;
+  transition: background-color 0.1s; }
+
+.navbar-default li:hover {
+  background-color: #FF3B3F; }
+  .navbar-default li:hover a {
+    /*letter-spacing: 1px;*/ }
+
+.navbar-default .navbar-toggle {
+  background-color: RGBA(0, 0, 0, 0);
+  border: 1px solid #A9A9A9; }
+
+.navbar-default .navbar-toggle:hover {
+  background-color: RGBA(0, 0, 0, 0);
+  border: 1px solid #FF3B3F; }
+
+.navbar-default .navbar-toggle:hover .icon-bar {
+  background-color: #FF3B3F; }
+
+.navbar-default .navbar-toggle:active {
+  background-color: #FF3B3F; }
+  .navbar-default .navbar-toggle:active .icon-bar {
+    background-color: #A9A9A9; }
+
+/* * * * * * * * * * * * * * *
+* FOOTER
+* * * * * * * * * * * * * * */
+footer {
+  display: block;
+  width: 100%;
+  height: 200px;
+  position: relative; }
+  footer a {
+    color: #A9A9A9; }
+  footer a:hover {
+    text-decoration: none;
+    color: #FF3B3F; }
+
+footer .socialIcon {
+  font-size: 150%;
+  padding: 15px; }
+
+/* * * * * * * * * * * * * * *
+* GUITAR SCALES
+* * * * * * * * * * * * * * */
+canvas {
+  transition: transform 1.5s;
+  width: 100%; }
+
+#selectedInterval,
+#selectedChords,
+#selectedNote {
+  visibility: hidden; }
+
+a {
+  transition: color 0.1s; }
+  a a:hover {
+    text-decoration: none; }
+
+.btn-primary {
+  margin-top: 20px;
+  border: solid 0.5px #A9A9A9;
+  background-color: #FF3B3F;
+  color: #A9A9A9;
+  transition: color 0.1s, background-color 0.1s, font-weight 0.3s;
+  padding: 20px; }
+
+.btn-primary:hover {
+  border: solid 0.5px #A9A9A9;
+  background-color: #CAEBF2;
+  color: #FF3B3F;
+  font-weight: bold; }
+
+/*--------------------------------------------*/
+/* Input Form */
+/*--------------------------------------------*/
+#keySelection {
+  overflow: auto;
+  padding-bottom: 40px; }
+  #keySelection h3 {
+    text-align: center; }
+
+#output-items {
+  display: flex;
+  justify-content: center; }
+
+.scaleList {
+  width: 10%;
+  font-size: 75%;
+  margin: 0px 10px 0px 10px; }
+
+/*--------------------------------------------*/
+/* Fret board */
+/*--------------------------------------------*/
+#output {
+  display: none;
+  overflow: auto;
+  margin-top: 20px; }
+  #output h4 {
+    text-align: center; }
+
+#neck {
+  display: none; }
+
+#accordion .ui-accordion-header {
+  color: #FF3B3F;
+  border: solid 2px #FF3B3F;
+  background-color: #CAEBF2;
+  border-radius: 5px;
+  padding: 10px;
+  box-shadow: 10px 10px -5px #888888; }
+  #accordion .ui-accordion-header div {
+    color: #EFEFEF;
+    line-height: 42px;
+    display: block;
+    font-size: 12pt;
+    width: 100%;
+    text-indent: 10px; }
+
+/* * * * * * * * * * * * * * *
+* BPM CALCULATOR
+* * * * * * * * * * * * * * */
+body {
+  background-color: #EFEFEF; }
+
+#usage {
+  padding: 20px 10% 20px 10%; }
+
+#results {
+  color: #FF3B3F;
+  padding: 20px; }
+
+@media (max-width: 762px) {
+  #results h2 {
+    display: block; } }
+input {
+  width: 50%; }
+
+#inputs {
+  /*	margin: 20px;*/
+  display: flex;
+  justify-content: center;
+  letter-spacing: 15px; }
+
+.slide {
+  margin: 20px 10% 20px 10%;
+  border: 1px solid #A9A9A9;
+  background-color: #CAEBF2; }
+
+/* * * * * * * * * * * * * * *
+* FREQUENCIES TABLE
+* * * * * * * * * * * * * * */
+#usage {
+  padding: 50px 10% 50px 10%; }
+
+img {
+  margin-top: 20px; }
+
+.form-control {
+  display: inline-flex;
+  /*width: 25%;*/
+  margin-bottom: 50px; }
+
+.slide {
+  margin: 50px 10% 50px 10%; }
+
+ /* * * * * * * * * * * * * * *
+* RESULTS TABLE
+* * * * * * * * * * * * * * */
+#results {
+  width: 100%;
+  margin-bottom: 50px; }
+
+table {
+  width: 90%;
+  margin-left: 5%;
+  margin-right: 5%; }
+
+th {
+  text-align: center;
+  width: 8%;
+  border: 1px solid #A9A9A9;
+  background-color: #CAEBF2;
+  color: #1a0000;
+  font-family: "Quicksand", sans-serif;
+  font-weight: bold; }
+
+td {
+  font-family: "Quicksand", sans-serif;
+  font-size: 70%;
+  border: 1px solid #A9A9A9;
+  width: 8%;
+  height: 25px;
+  transition: font-size 0.2s;
+  color: #A9A9A9; }
+
+td:hover {
+  color: #FF3B3F;
+  font-size: 100%;
+  font-weight: bolder; }
+
+.octHeader {
+  color: #1a0000;
+  background-color: #CAEBF2; }
+
+.form-control#noteSelection,
+.form-control#keySelection {
+  width: 25%; }
+
+/* * * * * * * * * * * * * * *
+*   TAP TEMPO
+* * * * * * * * * * * * * * */
+#results {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin-bottom: 50px; }
+
+/*# sourceMappingURL=style.css.map */

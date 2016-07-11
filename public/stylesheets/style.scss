@@ -1,0 +1,386 @@
+/*
+ *	Site: MOAI MUSIC TOOLS
+ *	Author: CHRISTOPHER MELVILLE
+ *	Date: JUNE 2016
+ *	Comments: BPM calculation stylesheet
+ */
+
+   /* * * * * * * * * * * * * * *
+  * OVERLAID BOOTSTRAP STYLES
+  * * * * * * * * * * * * * * */
+
+
+
+/*SASS STYLES*/
+/*08 - clean and highlighted */
+$sky: #CAEBF2;
+$carbon: #A9A9A9;
+$watermelon: #FF3B3F;
+$neutral: #EFEFEF;
+$black: #1a0000;
+$fontBold: 'Special Elite', cursive;
+$fontNorm: 'Quicksand', sans-serif;
+$buffer: 20px;
+
+
+/* * * * * * * * * * * * * * *
+* GENERAL GLOBAL STYLES
+* * * * * * * * * * * * * * */
+h1 {
+	font-family: $fontBold;
+}
+
+
+body {
+	text-align: center;
+}
+
+div {
+}
+
+#body {
+	background-color: $neutral;
+}
+h2, h3, h4 {
+	font-family: $fontNorm;
+}
+p {
+	color: $carbon;
+	font-family: $fontNorm;
+}
+
+body hr {
+	width: 50%;
+	border: 1px solid $watermelon;
+}
+
+iframe {
+	margin: 50px 0 50px 0;
+}
+
+/* * * * * * * * * * * * * * *
+* GLOBAL STYLES
+* * * * * * * * * * * * * * */
+
+.logo {
+	margin: $buffer;
+}
+
+.well {
+	border: 2px solid $sky;
+	background-color: $watermelon;
+
+	h3 {
+		color: $neutral;
+	}
+}
+
+.title {
+	font-size: 400%;
+	padding: $buffer*2;
+	color: $carbon;
+}
+
+/* * * * * * * * * * * * * * *
+* NAVIGATION
+* * * * * * * * * * * * * * */
+.navbar-default {
+	background-color: $sky;
+	border: 1px solid $carbon;
+	div {
+		/*border: 1px solid red;*/
+	}
+}
+.navbar-default a.navbar-brand {
+	font-color: $watermelon;
+	font-family: $fontBold;
+}
+@media (min-width: 762px) {
+	.navbar-default .container-fluid{
+		display: flex;
+		justify-content: space-between;
+		/*align-items: center;*/
+	}
+}
+.navbar-default ul {
+	margin: 0px;
+	height: 100%;
+}
+.navbar-default li {	
+	font-family: $fontBold;
+	height: 100%;
+	transition: background-color 0.1s;
+}
+.navbar-default li:hover {
+	background-color: $watermelon;
+	a {
+		/*letter-spacing: 1px;*/
+	}
+}
+.navbar-default .navbar-toggle {
+	background-color: RGBA(0,0,0,0);
+	border: 1px solid $carbon;
+}
+.navbar-default .navbar-toggle:hover {
+	background-color: RGBA(0,0,0,0);
+	border: 1px solid $watermelon;
+}
+.navbar-default .navbar-toggle:hover .icon-bar {
+	background-color: $watermelon;
+}
+.navbar-default .navbar-toggle:active {
+	background-color: $watermelon;
+	.icon-bar {
+		background-color: $carbon;
+	}
+}
+
+/* * * * * * * * * * * * * * *
+* FOOTER
+* * * * * * * * * * * * * * */
+footer {
+	display: block;
+	width: 100%;
+	height: 200px;
+	position: relative;
+	a {
+		color: $carbon;
+	}
+	a:hover {
+		text-decoration: none;
+		color: $watermelon;
+	}
+}
+
+footer .socialIcon {
+	font-size: 150%;
+	padding: 15px;
+}
+
+
+
+
+
+
+
+
+
+
+/* * * * * * * * * * * * * * *
+* GUITAR SCALES
+* * * * * * * * * * * * * * */
+
+canvas {
+	transition: transform 1.5s;
+	width: 100%;
+}
+#selectedInterval,
+#selectedChords,
+#selectedNote {
+  visibility: hidden; }
+
+a {
+  transition: color 0.1s;
+  	a:hover {
+  		text-decoration: none; 
+	} 
+}
+
+
+.btn-primary {
+	margin-top: 20px;
+	border: solid 0.5px $carbon;
+	background-color: $watermelon;
+	color: $carbon;
+	transition: color 0.1s, background-color 0.1s, font-weight 0.3s; 
+	padding: $buffer;
+ }
+.btn-primary:hover {
+	border: solid 0.5px $carbon;
+	background-color: $sky;
+	color: $watermelon; 
+	font-weight: bold;
+}
+
+
+/*--------------------------------------------*/
+/* Input Form */
+/*--------------------------------------------*/
+#keySelection {
+	overflow: auto;
+	padding-bottom: 40px; 
+	h3 {
+	  text-align: center; 
+	}
+}
+
+#output-items {
+  display: flex;
+  justify-content: center; }
+
+.scaleList {
+  width: 10%;
+  font-size: 75%;
+  margin: 0px 10px 0px 10px; }
+
+/*--------------------------------------------*/
+/* Fret board */
+/*--------------------------------------------*/
+#output {
+	display: none;
+	overflow: auto;
+	margin-top: 20px; 
+	h4 {
+		text-align: center; }
+} 
+#neck {
+  display: none; 
+}
+#accordion .ui-accordion-header {
+	color: $watermelon;
+	border: solid 2px $watermelon;
+	background-color: $sky;
+	border-radius: 5px;
+	padding: 10px;
+	box-shadow: 10px 10px -5px #888888; 
+	div {
+		color: $neutral;
+		line-height: 42px;
+		display: block;
+		font-size: 12pt;
+		width: 100%;
+		text-indent: 10px; }
+}
+
+
+
+
+
+
+
+
+/* * * * * * * * * * * * * * *
+* BPM CALCULATOR
+* * * * * * * * * * * * * * */
+
+body {
+	background-color: $neutral;
+}
+
+#usage {
+	padding: 20px 10% 20px 10% ;
+}
+
+#results {
+	color: $watermelon;
+	padding: $buffer;
+}
+@media(max-width: 762px){
+	#results h2 {
+		display: block;
+	}
+}
+
+input {
+	width: 50%;
+}
+
+#inputs {
+/*	margin: 20px;*/
+	display: flex;
+	justify-content: center;
+	letter-spacing: 15px;
+}
+.slide {
+	margin: $buffer 10% $buffer 10% ;
+	border: 1px solid $carbon;
+	background-color: $sky;
+}
+
+
+
+
+
+
+
+/* * * * * * * * * * * * * * *
+* FREQUENCIES TABLE
+* * * * * * * * * * * * * * */
+
+ #usage {
+	padding: 50px 10% 50px 10% ;
+}
+
+img {
+	margin-top: 20px;
+}
+
+.form-control {
+	display: inline-flex;
+	/*width: 25%;*/
+	margin-bottom: 50px;
+}
+.slide {
+	margin: 50px 10% 50px 10% ;
+}
+
+   /* * * * * * * * * * * * * * *
+  * RESULTS TABLE
+  * * * * * * * * * * * * * * */
+#results {
+	width: 100%;
+	margin-bottom: 50px;
+}
+table {
+	width: 90%;
+	margin-left: 5%;
+	margin-right: 5%;
+}
+th {
+	text-align: center;
+	width: 8%;
+	border: 1px solid $carbon;
+	background-color: $sky;
+	color: $black;
+	font-family: $fontNorm;
+	font-weight: bold;
+}
+td {
+	font-family: $fontNorm;
+	font-size: 70%;
+    border: 1px solid $carbon;
+	width: 8%;
+	height: 25px;
+	transition: font-size 0.2s;
+	color: $carbon;
+}
+td:hover {
+	color: $watermelon;
+	font-size: 100%;
+	font-weight: bolder;
+}
+.octHeader {
+	color: $black;
+	background-color: $sky;
+}
+
+.form-control#noteSelection,
+.form-control#keySelection {
+	width: 25%;
+}
+
+
+
+
+
+/* * * * * * * * * * * * * * *
+*   TAP TEMPO
+* * * * * * * * * * * * * * */
+
+#results {
+	display: flex;
+	flex-direction: row;
+	justify-content: center; 
+	margin-bottom: 50px;
+}
+

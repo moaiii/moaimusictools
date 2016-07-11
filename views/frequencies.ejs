@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel="icon" href="/images/frequenciesLogo.png">
+  <!-- 3rd party plugins -->
+    <script type="text/javascript" src="/javascripts/jquery.min.js"></script>
+    <script type="text/javascript" src="/javascripts/jquery-ui.js"></script>
+    <script type="text/javascript" src="/javascripts/bootstrap.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="/stylesheets/jquery-ui.css">
+    <link rel="stylesheet" type="text/css" href="/stylesheets/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="/stylesheets/font-awesome/css/font-awesome.css">
+    <script type="text/javascript" src="/javascripts/angular.min.js"></script>
+  <!-- custom page specific -->
+    <link href='https://fonts.googleapis.com/css?family=Special+Elite' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Quicksand' rel='stylesheet' type='text/css'>  
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <script type="text/javascript" src="/javascripts/frequency-brain.js"></script>
+
+  </head>
+  <body>  
+  <!-- Include the Header -->
+  <%- include header.ejs %>
+
+	<div class="text-center">
+  <!-- Page Body -->
+    <h1 class="title" ><%= title %></h1>
+    <hr>
+    <img class="logo" src="/images/frequenciesLogo.png">
+    <p id="usage">The <%= title %> helps you find the frequencies of notes in your projects key. This can be used to tune your electronic drums and percussion to make them sing! Or it can also help in EQ'ing.</p>
+    
+    <h4>Enter your projects key: </h4>
+    <select class="form-control" id="noteSelection" form="noteForm" onchange="getDomInput()">
+      <option value="E">E</option>
+      <option value="F">F</option>
+      <option value="F#">F#/ Gb</option>
+      <option value="G">G</option>
+      <option value="G#">G#/ Ab</option>
+      <option value="A">A</option>
+      <option value="A#">A#/ Bb</option>
+      <option value="B">B</option>    
+      <option value="C">C</option>
+      <option value="C#">C#/ Db</option>
+      <option value="D">D</option>
+      <option value="D#">D#/ Eb</option>
+    </select>
+    <select class="form-control" id="keySelection" form="keyForm" onchange="getDomInput()">
+      <option value="Major">Major</option>
+      <option value="NaturalMinor">Natural Minor</option>
+      <option value="MelodicMinor">Melodic Major</option>
+      <option value="HarmonicMinor">Harmonic Minor</option>
+    </select>
+
+    <div id="results">
+      <table>
+        <tr>
+          <th >Octave</th>
+          <td class="octHeader">0</td>
+          <td class="octHeader">1</td>
+          <td class="octHeader">2</td>
+          <td class="octHeader">3</td>
+          <td class="octHeader">4</td>
+          <td class="octHeader"> 5</td>
+          <td class="octHeader">6</td>
+          <td class="octHeader">7</td>
+          <td class="octHeader">8</td>   
+        </tr>
+        <tr>
+          <th id="n1"></th>
+          <td id="n1o1"></td>
+          <td id="n1o2"></td>
+          <td id="n1o3"></td>
+          <td id="n1o4"></td>
+          <td id="n1o5"></td>
+          <td id="n1o6"></td>
+          <td id="n1o7"></td>
+          <td id="n1o8"></td>
+          <td id="n1o9"></td>
+        </tr>
+        <tr>
+          <th id="n2"></th>
+          <td id="n2o1"></td>
+          <td id="n2o2"></td>
+          <td id="n2o3"></td>
+          <td id="n2o4"></td>
+          <td id="n2o5"></td>
+          <td id="n2o6"></td>
+          <td id="n2o7"></td>
+          <td id="n2o8"></td>
+          <td id="n2o9"></td>
+        </tr>
+        <tr>
+          <th id="n3"></th>
+          <td id="n3o1"></td>
+          <td id="n3o2"></td>
+          <td id="n3o3"></td>
+          <td id="n3o4"></td>
+          <td id="n3o5"></td>
+          <td id="n3o6"></td>
+          <td id="n3o7"></td>
+          <td id="n3o8"></td>
+          <td id="n3o9"></td>
+        </tr>
+        <tr>
+          <th id="n4"></th>
+          <td id="n4o1"></td>
+          <td id="n4o2"></td>
+          <td id="n4o3"></td>
+          <td id="n4o4"></td>
+          <td id="n4o5"></td>
+          <td id="n4o6"></td>
+          <td id="n4o7"></td>
+          <td id="n4o8"></td>
+          <td id="n4o9"></td>
+        </tr>
+        <tr>
+          <th id="n5"></th>
+          <td id="n5o1"></td>
+          <td id="n5o2"></td>
+          <td id="n5o3"></td>
+          <td id="n5o4"></td>
+          <td id="n5o5"></td>
+          <td id="n5o6"></td>
+          <td id="n5o7"></td>
+          <td id="n5o8"></td>
+          <td id="n5o9"></td>
+        </tr>
+        <tr>
+          <th id="n6"></th>
+          <td id="n6o1"></td>
+          <td id="n6o2"></td>
+          <td id="n6o3"></td>
+          <td id="n6o4"></td>
+          <td id="n6o5"></td>
+          <td id="n6o6"></td>
+          <td id="n6o7"></td>
+          <td id="n6o8"></td>
+          <td id="n6o9"></td>
+        </tr>
+        <tr>
+          <th id="n7"></th>
+          <td id="n7o1"></td>
+          <td id="n7o2"></td>
+          <td id="n7o3"></td>
+          <td id="n7o4"></td>
+          <td id="n7o5"></td>
+          <td id="n7o6"></td>
+          <td id="n7o7"></td>
+          <td id="n7o8"></td>
+          <td id="n7o9"></td>
+        </tr>
+        <tr>
+          <th id="n8"></th>
+          <td id="n8o1"></td>
+          <td id="n8o2"></td>
+          <td id="n8o3"></td>
+          <td id="n8o4"></td>
+          <td id="n8o5"></td>
+          <td id="n8o6"></td>
+          <td id="n8o7"></td>
+          <td id="n8o8"></td>
+          <td id="n8o9"></td>
+        </tr>
+        <tr>
+          <th id="n9"></th>
+          <td id="n9o1"></td>
+          <td id="n9o2"></td>
+          <td id="n9o3"></td>
+          <td id="n9o4"></td>
+          <td id="n9o5"></td>
+          <td id="n9o6"></td>
+          <td id="n9o7"></td>
+          <td id="n9o8"></td>
+          <td id="n9o9"></td>
+        </tr>
+        <tr>
+          <th id="n10"></th>
+          <td id="n10o1"></td>
+          <td id="n10o2"></td>
+          <td id="n10o3"></td>
+          <td id="n10o4"></td>
+          <td id="n10o5"></td>
+          <td id="n10o6"></td>
+          <td id="n10o7"></td>
+          <td id="n10o8"></td>
+          <td id="n10o9"></td>
+        </tr>
+        <tr>
+          <th id="n11"></th>
+          <td id="n11o1"></td>
+          <td id="n11o2"></td>
+          <td id="n11o3"></td>
+          <td id="n11o4"></td>
+          <td id="n11o5"></td>
+          <td id="n11o6"></td>
+          <td id="n11o7"></td>
+          <td id="n11o8"></td>
+          <td id="n11o9"></td>
+        </tr>
+        <tr>
+          <th id="n12"></th>
+          <td id="n12o1"></td>
+          <td id="n12o2"></td>
+          <td id="n12o3"></td>
+          <td id="n12o4"></td>
+          <td id="n12o5"></td>
+          <td id="n12o6"></td>
+          <td id="n12o7"></td>
+          <td id="n12o8"></td>
+          <td id="n12o9"></td>
+        </tr>
+      </table>
+    </div>
+
+    <p class="muted">(click to highlight table cells)</p>
+    <br><br>
+
+<!-- /* 
+  highlight table
+*/    -->
+    <script type="text/javascript">
+      $("td").click(function(){
+          $( this ).css("background-color", "#FF3B3F");
+          $( this ).css("color", "#1a0000");
+      });
+    </script>
+
+  <!-- Include Footer -->
+    <%- include footer.ejs%>
+  </div>
+  </body>
+</html>
