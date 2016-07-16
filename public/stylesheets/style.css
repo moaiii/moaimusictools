@@ -205,12 +205,22 @@ body {
   padding: 20px 10% 20px 10%; }
 
 #results {
+  display: block;
   color: #FF3B3F;
   padding: 20px; }
+  @media (max-width: 768px) {
+    #results h2 {
+      width: 100%;
+      display: block; } }
 
-@media (max-width: 762px) {
-  #results h2 {
-    display: block; } }
+/*@media(max-width: 762px){
+	#results h2 {
+		display: block;
+	}
+}*/
+#bpm-content {
+  display: block; }
+
 input {
   width: 50%; }
 

@@ -272,13 +272,25 @@ body {
 }
 
 #results {
+	display: block;
 	color: $watermelon;
 	padding: $buffer;
+
+	@media(max-width: 768px){
+		h2 {
+			width: 100%;
+			display: block;
+		}
+	}
 }
-@media(max-width: 762px){
+/*@media(max-width: 762px){
 	#results h2 {
 		display: block;
 	}
+}*/
+
+#bpm-content {
+	display: block;
 }
 
 input {

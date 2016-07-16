@@ -1,6 +1,11 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="author" content="Christopher Melville">
+
     <title><%= title %></title>
     <link rel="icon" href="/images/bpmLogo.png">
   <!-- 3rd party plugins -->
@@ -27,27 +32,27 @@
     <img class="logo" src="/images/bpmLogo.png">
     <p id="usage">The <%= title %> can be used for detailed timing work with your LFO's and delays.</p>
     
-    <div class="row container">
+    <div class="container" style="display: block;">
       
-      <div class="col-sm-6">
+      <div class="col-sm-6 col-sm-offset-3">
         <h4>Enter your projects BPM: </h4>
         <input class="form-control" type="number" required="true" id="bpm" value="125" onchange="calculate()">
       </div>
 
-      <div id="inputs">    
+      <div class="col-sm-6 col-sm-offset-3" id="inputs">    
         <h2 id="numerator">1</h2>
         <h2>/</h2>
         <h2 id="denominator">1</h2>
       </div>
 
-      <div class="col-sm-6" id="slides">
+      <div class="col-sm-6 col-sm-offset-3" id="slides">
         <div class="slide" id="slider-numerator"></div>
         <div class="slide" id="slider-denominator"></div>
       </div>
 
     </div>
 
-    <div id="results" class="col-sm-12">
+    <div id="results">
       <h2 id="msResult"></h2>
       <h2>&nbsp - &nbsp</h2>
       <h2 id="htzResult"></h2>    

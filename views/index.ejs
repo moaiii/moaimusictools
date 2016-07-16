@@ -1,8 +1,20 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="author" content="Christopher Melville">
+
     <title><%= title %></title>
+  <!-- og:meta tags -->
+    <meta property="og:url"                content="http://www.moaimusictools.herokuapp.com" />
+    <meta property="og:type"               content="website" />
+    <meta property="og:title"              content="Moai's Music Production Tools" />
+    <meta property="og:description"        content="Tools for music production and song writting by Moai" />
+    <meta property="og:image"              content="/images/toolsLogo.png" />
     <link rel="icon" href="/images/toolsLogo.png">
+  <!-- 3rd Party plugins -->
     <script type="text/javascript" src="/javascripts/jquery.min.js"></script>
     <script type="text/javascript" src="/javascripts/jquery-ui.js"></script>
     <script type="text/javascript" src="/javascripts/bootstrap.min.js"></script>
@@ -14,8 +26,20 @@
     <link href='https://fonts.googleapis.com/css?family=Quicksand' rel='stylesheet' type='text/css'>  
     <link rel='stylesheet' href='/stylesheets/style.css' />
 
+
   </head>
   <body id="body">
+  <!-- facebook SDK -->
+  <div id="fb-root"></div>
+  <script>(function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "//connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v2.6";
+    fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
+  </script>
+
 	<!-- Include the Header -->
 	<%- include header.ejs %>
 
